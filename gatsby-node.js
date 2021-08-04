@@ -1,14 +1,16 @@
-const fetch = require('node-fetch');
+const fetch = require("node-fetch");
 
 exports.sourceNodes = async ({
   actions: { createNode },
   createContentDigest,
 }) => {
   const builderId = process.env.BUILDER_ID;
-  if(builderId){
-    try{
-      console.log("BUILDER ID: ",builderId);
-      const data = await fetch(`https://api.clasihome.com/rest/builders?builderId=${builderId}`);
+  if (builderId) {
+    try {
+      console.log("BUILDER ID: ", builderId);
+      const data = await fetch(
+        `https://api.clasihome.com/rest/builders?builderId=${builderId}`
+      );
       const result = await data.json();
       result.typeId = result.user ? "user" : "office";
       createNode({
@@ -21,12 +23,10 @@ exports.sourceNodes = async ({
           contentDigest: createContentDigest({ data: JSON.stringify(result) }),
         },
       });
-
-    }catch(e){
+    } catch (e) {
       console.log("ERROR: ", e);
     }
-  }
-  else{
+  } else {
     createNode({
       data: false,
       id: `example-build-time-data`,
@@ -38,4 +38,4 @@ exports.sourceNodes = async ({
       },
     });
   }
-}
+};

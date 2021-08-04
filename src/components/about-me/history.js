@@ -3,6 +3,8 @@ import context from "../../context";
 import styled from "styled-components";
 import { Container, Row, Col } from "react-bootstrap";
 
+import imgHero from "../../images/home-about-history-background.jpg";
+
 import { Section } from "../../styled-components";
 
 const SectionCustom = styled(Section)``;
@@ -29,15 +31,20 @@ export default () => {
       <Container>
         <Row>
           <Col xs={12} md={{ span: 7, order: 2 }}>
-            <Image alt='historia' src={state.about.history.background} />
+            <Image alt='historia' src={imgHero} />
           </Col>
           <Col xs={12} md={{ span: 5, order: 1 }}>
-            <Title>{state.about.history.title}</Title>
-            <Description
-              dangerouslySetInnerHTML={{
-                __html: state.about.history.description,
-              }}
-            />
+            <Title>Mi Historia</Title>
+            <Description>
+              De profesión Educadora de párvulos, titulada de Universidad
+              Católica de ChileProfesional del área inmobiliaria titulada,
+              enfocada a la atención de clientes en proyectos inmobiliarios y en
+              el área de corretaje de propiedades tanto a personas como a
+              empresas desde hace más de 20 años.Mi gran fortaleza es el
+              profundo conocimiento habitacional y comercial inmobiliario lo
+              cual permite agregar valor a mi gestión en las diferentes áreas
+              que me desempeño.
+            </Description>
           </Col>
         </Row>
       </Container>
