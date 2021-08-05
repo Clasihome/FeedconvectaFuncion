@@ -3,7 +3,7 @@ import context from "../../context";
 import styled from "styled-components";
 import { Container, Row, Col } from "react-bootstrap";
 
-import imgHero from "../../images/home-about-history-background.jpg";
+import imgHero from "../../images/me.jpg";
 
 import { Section } from "../../styled-components";
 
@@ -19,9 +19,11 @@ const Image = styled.img`
 `;
 const Title = styled.h2`
   //width: 50%;
+  margin-top: 40px;
 `;
 const Description = styled.div`
-  padding: 40px 10px 0px 0px;
+  padding: 40px 40px 0px 0px;
+  text-align: justify;
 `;
 
 export default () => {
