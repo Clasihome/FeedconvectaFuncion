@@ -21,9 +21,14 @@ const AniLinkCustom = styled(AniLink)`
 `
 
 const Card = styled.div`
-  width: 100%;
+  width: 95%;
   border: 1px solid rgba(0, 0, 0, .1);
   min-height: 496.09px;
+  position: relative;
+  @media(min-width: 768px){
+    width: 100%;
+    margin:0;
+  }
 `
 const Image = styled.div`
   width: 100%;
@@ -68,6 +73,36 @@ const CharItem = styled.li`
     margin-left: .5rem;
   }
 `
+const getCategoryByCode = (title) => {
+  if (typeof title !== 'string') {
+    return 'Categoría Desconocida';
+  }
+
+  const categoryMapping = {
+    '4': 'Parcela',
+    '5': 'Local',
+    '1': 'Casa',
+    '3': 'Oficina',
+    '2': 'Departamento',
+  };
+
+  const digits = title.match(/\d/g);
+
+  const foundCategory = digits ? digits.find(digit => categoryMapping[digit]) : null;
+
+  return categoryMapping[foundCategory] || 'Categoría Desconocida';
+};
+const Tag = styled.div`
+  background-color: ${props => props.theme.primaryColor};
+  color: #fff;
+  position: absolute;
+  top: ${props => props.top};
+  left: ${props => props.left};
+  font-size: 15px;
+  padding: .1rem 2rem;
+  transform: rotate(-45deg);
+  box-shadow: 0px 2px 15px rgba(0,0,0, .5);
+`
 
 export default ({
   mainImage,
@@ -78,20 +113,32 @@ export default ({
   ubication,
   characteristics,
   _id,
-  operation
+  operation,
+  status
 })=>{
   const state = useContext(context);
+  const visibleTag = status === "VENDIDA" || status ===  "ARRENDADA";
   return(
     <AniLinkCustom paintDrip hex={state.primaryColor} to={`/property?id=${_id}`} duration={.5}>
       <Card>
+      {
+          visibleTag && (
+          <Tag
+            top={status === "VENDIDA" ? "22px" : "28px"}
+            left={status === "VENDIDA" ? "-32px" : "-38px"}
+          >
+            {status}
+          </Tag>            
+          )
+        }
         <Image src={mainImage} />
         <InfoCont>
           <TitleCont>
             <Title>
-              {
-                truncate(title, 50)
-              }
+            {getCategoryByCode(title)} {title.replace(/\d+/, '').trim()}
+              
             </Title>
+           
             <Price>
               {
                 `${currency} ${currency === "UF" ? value : priceFormat(value)}`
@@ -115,7 +162,7 @@ export default ({
               characteristics.filter(char => (
                 char.name === "Superficie total" ||
                 char.name === "Superficie útil" ||
-                char.name === "Habitaciones" ||
+                char.name === "Dormitorios" ||
                 char.name === "Baños" ||
                 char.name === "Estacionamientos"
 
@@ -138,3 +185,4 @@ export default ({
     </AniLinkCustom>
   )
 }
+

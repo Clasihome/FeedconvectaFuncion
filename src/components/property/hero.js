@@ -6,6 +6,7 @@ import ImageGallery from 'react-image-gallery';
 import 'react-image-gallery/styles/css/image-gallery.css';
 import { LeftOutlined, RightOutlined } from '@ant-design/icons';
 import { truncate, priceFormat } from '../../util';
+import AniLink from "gatsby-plugin-transition-link/AniLink";
 
 import { Section } from '../../styled-components';
 import { Site, Surface, Rooms, Bath, Parking } from '../../icons';
@@ -13,7 +14,11 @@ import { Site, Surface, Rooms, Bath, Parking } from '../../icons';
 const ImageGalleryCustom = styled(ImageGallery)`
 
 `
-
+const Navigation = styled.nav`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+`;
 const Image = styled.div`
   width: 100%;
   padding-top: 75%;
@@ -167,7 +172,25 @@ const InteractiveAsset = (item, interactive, provider)=> {
     </InteractiveCont>
   )
 }
+const getCategoryByCode = (title) => {
+  if (typeof title !== 'string') {
+    return 'Categoría Desconocida';
+  }
 
+  const categoryMapping = {
+    '4': 'Parcela',
+    '5': 'Local',
+    '1': 'Casa',
+    '3': 'Oficina',
+    '2': 'Departamento',
+  };
+
+  const digits = title.match(/\d/g);
+
+  const foundCategory = digits ? digits.find(digit => categoryMapping[digit]) : null;
+
+  return categoryMapping[foundCategory] || 'Categoría Desconocida';
+};
 export default ()=> {
   const state = useContext(context);
   const {
@@ -191,10 +214,31 @@ export default ()=> {
     thumbnailClass: "thumbnail-custom",
     renderItem: () => <InteractiveAsset {...item} />,
   }));
+  const StyledButton = styled.button`
+  background-color:  ${props => props.theme.primaryColor}; /* Reemplaza 'yourColor' con el color deseado */
+  color:  ${props => props.theme.primaryColor};
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
 
+  &:hover {
+    background-color: #yourHoverColor; /* Reemplaza 'yourHoverColor' con el color deseado al pasar el ratón */
+  }
+`;
   return(
     <Section height="50vh" first>
+      
       <Container>
+      <Navigation>
+      <StyledButton as={AniLink} paintDrip hex={state.primaryColor} to='/' duration={0.5}>
+      Volver
+    </StyledButton>
+      </Navigation>
+      <br></br>
         <Row>
           <Col xs={12} md={7} className="d-none d-md-block">
             <ImageGalleryCustom
@@ -221,8 +265,8 @@ export default ()=> {
                   <Code>
                     {operation.toLowerCase() + " - COD: " + code }
                   </Code>
-                  <Title>
-                    {truncate(title, 50)}
+                  <Title>{getCategoryByCode(title)} {title.replace(/\d+/, '').trim()}
+                    
                   </Title>
                 </div>
                 <div>

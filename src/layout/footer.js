@@ -132,7 +132,7 @@ export default () => {
 
   return (
     <Footer>
-      <Container>
+      {/*<Container>
         <Row className='align-items-center'>
           <Col xs={{ span: 6, order: 6 }} md={{ span: 6, order: 0 }} lg={4}>
             <AniLink paintDrip hex={state.primaryColor} to='/' duration={0.5}>
@@ -256,8 +256,8 @@ export default () => {
             </NavCont>
           </Col>
         </Row>
-      </Container>
-      <CopyrightCont>
+      </Container>*/}
+      {/*<CopyrightCont>
         <Container>
           <CopyrightInnerCont>
             <span>
@@ -275,7 +275,7 @@ export default () => {
             </div>
           </CopyrightInnerCont>
         </Container>
-      </CopyrightCont>
+    </CopyrightCont>*/}
     </Footer>
   );
 };

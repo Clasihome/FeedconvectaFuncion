@@ -1,5 +1,5 @@
 export default (filters) => {
-  const base = 'https://api.clasihome.com/rest/properties?';
+  const base = 'https://wsnzm.clasihome.com:3443/api/conv/properties?';
   filters.typeId = filters.user ? "user" : "office";
   filters.status = "PUBLICADA";
   filters.limit = 6;

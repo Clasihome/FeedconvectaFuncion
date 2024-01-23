@@ -32,7 +32,8 @@ export default () => {
   return (
     <Header className='d-none d-lg-block'>
       <RateBar />
-      <Container>
+      
+      {/*<Container>
         <Navigation>
           <AniLink paintDrip hex={state.primaryColor} to='/' duration={0.5}>
             <Logo />
@@ -82,7 +83,7 @@ export default () => {
             </NavItem>
           </NavList>
         </Navigation>
-      </Container>
+  </Container>*/}
     </Header>
   );
 };

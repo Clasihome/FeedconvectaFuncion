@@ -134,7 +134,7 @@ export default ()=> {
       const result = await data.text();
       
       if(result === "success"){
-        console.log("MAIL API RESULT", result);
+        //console.log("MAIL API RESULT", result);
         setLoading(false);
         setSuccess(true);
         setTimeout(()=> {
@@ -157,7 +157,7 @@ export default ()=> {
   
   return(
     <SectionCustom>
-      {console.log("CONTACT STATE", state)}
+      {/*{console.log("CONTACT STATE", state)}*/}
       <div>
       <Title>Contacto</Title>
       <UserCont>

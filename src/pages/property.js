@@ -25,7 +25,9 @@ const Title = styled.p`
 
 export default ({ location })=> {
   const params = new URLSearchParams(location.search);
-  const url = `https://api.clasihome.com/rest/properties/?propertyId=${params.get("id")}`;
+  // const url = `https://api.clasihome.com/rest/properties/?propertyId=${params.get("id")}`;
+  const url = `https://wsnzm.clasihome.com:3443/api/conv/property?propertyId=${params.get("id")}`;
+
   const [query, setQuery] = useReducer((current, next) => ({ ...current, ...next }),{
     loading: true,
     error: false,
@@ -61,6 +63,7 @@ export default ({ location })=> {
       <span>Error de conexión</span>
     </SectionCustom>
   )
+  
   
   return(
     <Context.Provider value={query.data}>

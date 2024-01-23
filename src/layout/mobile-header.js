@@ -56,7 +56,7 @@ export default ()=> {
     <Fragment>
     <Header className="d-lg-none">
       <Container>
-        <Navigation>
+        {/*<Navigation>
           <AniLink paintDrip hex={state.primaryColor} to="/" duration={.5}>
             <Logo />
           </AniLink>
@@ -71,12 +71,12 @@ export default ()=> {
             borderRadius={0}
             animationDuration={0.5}
           />          
-        </Navigation>
+  </Navigation>*/}
       </Container>
     </Header>
     <NavPanel visible={open}>
       <RateBar />
-      <NavList>
+      {/*<NavList>
         <NavItem>
           <AniLink paintDrip hex={state.primaryColor} to="/properties" onClick={()=> setOpen(false)} duration={.5}>
             <NavLink light>
@@ -98,7 +98,7 @@ export default ()=> {
             </NavLink>
           </AniLink>
         </NavItem>                
-      </NavList>
+</NavList>*/}
       <NavList horizontal>
         <NavItem>
           <AniLink href={state.facebook} target="_blank" rel="noopener">
