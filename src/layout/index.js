@@ -143,9 +143,9 @@ export default ({ children, location }) => {
     `
   );
 
-  const getFeatured = async(id, typeId, maxProperties)=> {
+  const getFeatured = async(email, id, typeId, maxProperties)=> {
     try{
-      const data = await fetch(`https://wsnzm.clasihome.com:3443/api/conv/properties?id=${id}&typeId=${typeId}&status=PUBLICADA&limit=${maxProperties}`);
+      const data = await fetch(`https://wsnzm.clasihome.com:3443/api/conv/properties?email=${email}novahome@nexxos.cl&id=${id}&typeId=${typeId}&status=PUBLICADA&limit=${maxProperties}`);
       //const data = await fetch(`https://api.clasihome.com/rest/properties?id=${id}&typeId=${typeId}&status=PUBLICADA&limit=${maxProperties}`);
       const result = await data.json();
       return result;
@@ -170,9 +170,9 @@ export default ({ children, location }) => {
         dataEval.featuredProperties = featuredProperties.properties;
         console.log("RUNTIME DATA", dataEval);
         setData({ loading: false, data: dataEval });
-      } else if (builderId) {
+      } else if (builderId) {s
         const data = await fetch(
-          `https://api.clasihome.com/rest/builders?builderId=${builderId}`
+          `https://wsnzm.clasihome.com:3443/api/conv/properties}`
         );
         const result = await data.json();
         const dataEval = formatData(result);
@@ -186,7 +186,7 @@ export default ({ children, location }) => {
         setData({ loading: false, data: dataEval });
       } else {
         console.log("NO DATA", dataEval);
-        const dataEval = formatData({ office: "5e8e36b31c9d440000d35090" });
+        const dataEval = formatData({ office: "" });
         const featuredProperties = await getFeatured(
           dataEval.officeId,
           dataEval.typeId,
