@@ -5,7 +5,7 @@ import HamburgerMenu from 'react-hamburger-menu';
 import { Container } from 'react-bootstrap';
 import AniLink from "gatsby-plugin-transition-link/AniLink";
 import { FacebookOutlined, InstagramOutlined, TwitterOutlined } from '@ant-design/icons';
-
+import foto from '../images/logo-light-mobil.png'; // Import the image
 import Logo from './logo';
 import RateBar from './ratebar';
 import { NavLink } from '../styled-components';
@@ -56,9 +56,11 @@ export default ()=> {
     <Fragment>
     <Header className="d-lg-none">
       <Container>
-        {/*<Navigation>
+        <Navigation>
           <AniLink paintDrip hex={state.primaryColor} to="/" duration={.5}>
-            <Logo />
+          <div>
+              <img src={foto} alt="Logo" /> {/* Use img tag to display the image */}
+            </div>
           </AniLink>
           <HamburgerMenu
             isOpen={open}
@@ -71,7 +73,7 @@ export default ()=> {
             borderRadius={0}
             animationDuration={0.5}
           />          
-  </Navigation>*/}
+  </Navigation>
       </Container>
     </Header>
     <NavPanel visible={open}>

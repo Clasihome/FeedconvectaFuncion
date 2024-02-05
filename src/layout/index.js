@@ -145,12 +145,13 @@ export default ({ children, location }) => {
 
   const getFeatured = async(email, id, typeId, maxProperties)=> {
     try{
-      const data = await fetch(`https://wsnzm.clasihome.com:3443/api/conv/properties?email=${email}novahome@nexxos.cl&id=${id}&typeId=${typeId}&status=PUBLICADA&limit=${maxProperties}`);
+      const data = await fetch(`https://wsnzm.clasihome.com:3443/api/conv/properties?email=${email}katy@morelpropiedades.cl&email=${email}massiel@morelpropiedades.cl&id=${id}&typeId=${typeId}&status=PUBLICADA&limit=${maxProperties}`);
       //const data = await fetch(`https://api.clasihome.com/rest/properties?id=${id}&typeId=${typeId}&status=PUBLICADA&limit=${maxProperties}`);
       const result = await data.json();
       return result;
     }catch(e){
       console.log("ERROR PROPIEDADES DESTACADAS ", e);
+
     }
   }
 
@@ -170,7 +171,7 @@ export default ({ children, location }) => {
         dataEval.featuredProperties = featuredProperties.properties;
         console.log("RUNTIME DATA", dataEval);
         setData({ loading: false, data: dataEval });
-      } else if (builderId) {s
+      } else if (builderId) {
         const data = await fetch(
           `https://wsnzm.clasihome.com:3443/api/conv/properties}`
         );
@@ -247,7 +248,7 @@ export default ({ children, location }) => {
           <MobileHeader />
           <DesktopHeader />
           {children}
-          <ContactButton
+          {/*<ContactButton
             title='Enviar WhatsApp'
             rel='noopener'
             target='_blank'
@@ -264,7 +265,7 @@ export default ({ children, location }) => {
             href={`tel:${data.data.phone.replace(/\s/g, "")}`}
           >
             <PhoneOutlined />
-          </ContactButton>
+  </ContactButton>*/}
           <Footer />
         </MainCont>
       </ThemeProvider>

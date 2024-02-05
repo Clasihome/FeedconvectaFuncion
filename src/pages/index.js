@@ -12,10 +12,10 @@ export default () => {
     <Fragment>
       <Hero />
       <Properties />
-      <OfficeInfo />
+      {/*<OfficeInfo />
       <About />
       <Review />
-  <Contact />
+  <Contact />*/}
     </Fragment>
   );
 };

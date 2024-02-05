@@ -163,7 +163,7 @@ export default ()=> {
       <UserCont>
       {
           user.avatar?(
-            <Avatar src={user.avatar} alt={user.lastName} />
+            <Avatar src="src/images/icon.png" />
           )
           :(
             <NoAvatar>

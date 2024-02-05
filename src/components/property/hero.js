@@ -233,10 +233,14 @@ export default ()=> {
     <Section height="50vh" first>
       
       <Container>
+      <br></br>
+      <br></br>
+      <br></br>
+      <br></br>
+      <br></br>
+      
       <Navigation>
-      <StyledButton as={AniLink} paintDrip hex={state.primaryColor} to='/' duration={0.5}>
-      Volver
-    </StyledButton>
+     
       </Navigation>
       <br></br>
         <Row>

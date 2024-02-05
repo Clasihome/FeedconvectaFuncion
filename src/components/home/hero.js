@@ -11,9 +11,9 @@ import FormCode from '../forms/code';
 import { Agro } from '../../icons';
 
 const MainCont = styled(Section)`
-  background-image: linear-gradient(rgba(0, 0, 0, .5), rgba(0, 0, 0, .5)), url("${props => props.src}");
-  background-attachment: fixed;
-  background-position: top;
+  background-image: url("${props => props.src}");
+  background-attachment: center;
+  background-position: center;
   background-size: cover;
   color: #fff;
   display: flex;
@@ -96,6 +96,10 @@ export default ()=> {
       src={state.home.hero.background} first height="100vh"
     >
       <Container>
+        <br></br>
+        <br></br>
+        <br></br>
+        <br></br>
         <Title id="title">
           {
             state.home.hero.title

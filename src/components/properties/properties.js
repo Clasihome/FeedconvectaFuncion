@@ -82,22 +82,23 @@ export default ()=> {
     setQuery({ loading: true });
     try{
       const baseUrl = `https://wsnzm.clasihome.com:3443/api/conv/properties/`;
-      const params = location.search ? location.search : `?status=PUBLICADA,ARRENDADA,VENDIDA&email=novahome@nexxos.cl&limit=12&typeId=${typeId}&id=${officeId}`;
+      const params = location.search || `?status=PUBLICADA,ARRENDADA,VENDIDA&email=katy@morelpropiedades.cl&email=massiel@morelpropiedades.cl&address=Lomas%20Blancas`;
       const url = baseUrl + params;
       const data = await fetch(url);
       const result = await data.json();
       setQuery({ loading: false, data: result, error: false }); 
     }
-    catch(e){
+    
+    catch(e){ 
       console.log("ERROR EN PROPERTIES", e);
-      setQuery({ loading: false, data: null, error: true });
+      setQuery({ loading: false, data: null, error: true }); 
     }
   }
 
   const handlePaginate =(val)=> {
       console.log(val.selected);
       //const url = urlBuilder('/properties',{...params, page: val.selected} );
-      const params = location.search ? location.search : `?status=PUBLICADA,ARRENDADA,VENDIDA&email=novahome@nexxos.cl&limit=12&typeId=${typeId}&id=${officeId}`;
+      const params = location.search || `?status=PUBLICADA,ARRENDADA,VENDIDA&email=katy@morelpropiedades.cl&email=massiel@morelpropiedades.cl&address=Lomas%20Blancas`;
       const url = `/properties/` + params + `&page=${val.selected}`;
       navigate(url);
   };

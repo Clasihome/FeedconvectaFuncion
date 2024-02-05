@@ -43,9 +43,9 @@ export default ()=>{
         <PropertiesCarouselCont>
           <Carousel />
         </PropertiesCarouselCont>
-        <Banner>
+       {/*<Banner>
           <Row>
-            <Col xs={12} md={9}>              
+            <Col xs={3} md={3}>              
               <BannerText>
                 <EnvironmentOutlined style={{ marginRight: "1rem", fontSize: "1.5rem" }} />
                 {state.home.properties.footer}
@@ -61,7 +61,7 @@ export default ()=>{
               </AniLink>
             </Col>            
           </Row>
-        </Banner>
+        </Banner>*/}
       </Container>
     </Section>
   )
